@@ -1,7 +1,7 @@
 package com.example.anjoslogin.Modelo;
 
 public class Anjo {
-    private Integer _id;
+    private String _id;
     private String nome;
     private String cpf;
     private String endereco;
@@ -15,11 +15,11 @@ public class Anjo {
         return nome;
     }
 
-    public Integer get_id() {
+    public String get_id() {
         return _id;
     }
 
-    public void set_id(Integer _id) {
+    public void set_id(String _id) {
         this._id = _id;
     }
 
