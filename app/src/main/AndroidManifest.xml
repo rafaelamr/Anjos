@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Usuario.Perfil"></activity>
+        <activity android:name=".Listagem.ListarFamilias"></activity>
+        <activity android:name=".Recycler.ActivityRecycler" />
+        <activity android:name=".SelecionarAcao" />
+        <activity android:name=".Usuario.Perfil" />
         <activity android:name=".ResetarSenha" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Usuario.CadastrarUsuario" />

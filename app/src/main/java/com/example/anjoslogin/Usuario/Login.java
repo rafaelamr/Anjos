@@ -13,9 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.anjoslogin.FirebaseConf.Conexao;
+import com.example.anjoslogin.Listagem.ListarFamilias;
 import com.example.anjoslogin.MainActivity;
 import com.example.anjoslogin.R;
 import com.example.anjoslogin.ResetarSenha;
+import com.example.anjoslogin.SelecionarAcao;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -77,7 +79,7 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            Intent i=new Intent(Login.this, MainActivity.class);
+                            Intent i=new Intent(Login.this, SelecionarAcao.class);
                             startActivity(i);
                         }
                         else

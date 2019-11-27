@@ -11,12 +11,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tVLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Realizar Login" />
-
         <EditText
             android:id="@+id/editEmailLogin"
             android:layout_width="match_parent"
@@ -49,7 +43,7 @@
             android:id="@+id/tVResetar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Resetar Senha" />
+            android:text="Resetar Senha?" />
 
         <ProgressBar
             android:id="@+id/progressBarLogin"
@@ -57,5 +51,4 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

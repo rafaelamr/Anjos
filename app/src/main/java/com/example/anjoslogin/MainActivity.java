@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onClick(View view) {
                 anjo = new Anjo();
-                anjo.set_id(Integer.parseInt(alias_id.getText().toString()));
+                anjo.set_id(alias_id.getText().toString());
                 anjo.setNome(aliasnome.getText().toString());
                 anjo.setCpf(aliascpf.getText().toString());
                 anjo.setEndereco(aliasendereco.getText().toString());
