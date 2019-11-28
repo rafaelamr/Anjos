@@ -6,49 +6,85 @@
     android:layout_height="match_parent"
     tools:context=".Usuario.Perfil">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="7dp"
+        android:text="Perfil"
+        app:layout_constraintBottom_toTopOf="@+id/textViewEmailPerfil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Perfil" />
+    <TextView
+        android:id="@+id/textViewEmailPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="Email"
+        app:layout_constraintBottom_toTopOf="@+id/textEmailPerfil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-        <TextView
-            android:id="@+id/textViewEmailPerfil"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Email" />
+    <TextView
+        android:id="@+id/textEmailPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/textViewIdPerfil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEmailPerfil" />
 
-        <TextView
-            android:id="@+id/textEmailPerfil"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/textViewIdPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ID"
+        app:layout_constraintBottom_toTopOf="@+id/textIdPerfil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textEmailPerfil" />
 
-        <TextView
-            android:id="@+id/textViewIdPerfil"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ID" />
+    <TextView
+        android:id="@+id/textIdPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonLogout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewIdPerfil" />
 
-        <TextView
-            android:id="@+id/textIdPerfil"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/buttonLogout"
+        android:layout_width="151dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:text="logout"
+        android:background="@drawable/redondin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textIdPerfil" />
 
-        <Button
-            android:id="@+id/buttonLogout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="logout" />
+  <!--  <Button
+        android:id="@+id/buttonPerfilCrud"
+        android:layout_width="221dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/redondin"
+        android:text="cadastrar anjo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogout" />-->
 
-        <Button
-            android:id="@+id/buttonPerfilCrud"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="crud com autentificacao" />
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

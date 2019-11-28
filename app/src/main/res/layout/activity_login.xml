@@ -6,49 +6,103 @@
     android:layout_height="match_parent"
     tools:context=".Usuario.Login">
 
-    <LinearLayout
+    <EditText
+        android:id="@+id/editEmailLogin"
+        android:layout_width="281dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="192dp"
+        android:background="@drawable/redondintext"
+        android:ems="10"
+        android:hint="    Email:"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tVResetar"
+        android:layout_width="300dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="44dp"
+        android:text="Esqueceu sua Senha?"
+        app:layout_constraintBottom_toTopOf="@+id/buttonLogar"
+        app:layout_constraintEnd_toEndOf="@+id/editSenhaLogin"
+        app:layout_constraintHorizontal_bias="0.205"
+        app:layout_constraintStart_toStartOf="@+id/editSenhaLogin"
+        app:layout_constraintTop_toBottomOf="@+id/editSenhaLogin"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ProgressBar
+        android:id="@+id/progressBarLogin"
+        style="?android:attr/progressBarStyle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="165dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonNovoUsuario"
+        app:layout_constraintVertical_bias="0.0" />
 
-        <EditText
-            android:id="@+id/editEmailLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Email"
-            android:inputType="textEmailAddress" />
+    <EditText
+        android:id="@+id/editSenhaLogin"
+        android:layout_width="281dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/redondintext"
+        android:ems="10"
+        android:hint="    Senha:"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/editEmailLogin"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editEmailLogin"
+        app:layout_constraintTop_toBottomOf="@+id/editEmailLogin" />
 
-        <EditText
-            android:id="@+id/editSenhaLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Senha"
-            android:inputType="textPassword" />
+    <Button
+        android:id="@+id/buttonNovoUsuario"
+        android:layout_width="172dp"
+        android:layout_height="44dp"
+        android:background="@drawable/redondin"
+        android:text="Novo Usuario"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/progressBarLogin"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="@+id/progressBarLogin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.675" />
 
-        <Button
-            android:id="@+id/buttonLogar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Entrar" />
+    <Button
+        android:id="@+id/buttonLogar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/redondin"
+        android:text="Entrar"
+        app:layout_constraintBottom_toTopOf="@+id/buttonNovoUsuario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.429"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.978" />
 
-        <Button
-            android:id="@+id/buttonNovoUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Novo usuario" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
+        android:layout_marginBottom="65dp"
+        android:text="Seja bem vindo, Anjo! Obrigada por se juntar à nós."
+        app:layout_constraintBottom_toTopOf="@+id/editEmailLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
-        <TextView
-            android:id="@+id/tVResetar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Resetar Senha?" />
-
-        <ProgressBar
-            android:id="@+id/progressBarLogin"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

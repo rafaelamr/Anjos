@@ -2,5 +2,9 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#F587AB</color>
+    <color name="colorBotao">#FFF587AB</color>
+    <color name="corPrincipal">#e1bee7</color>
+    <color name="corSecundaria">#ce93d8</color>
+    <color name="corfunfo">#fff1ff</color>
 </resources>

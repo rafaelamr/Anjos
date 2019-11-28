@@ -26,19 +26,19 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
-    public EditText alias_id,aliasnome, aliascpf, aliasendereco;
-    public Button aliassalvar, aliasapagar,aliaslogout;
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+    public EditText alias_id, aliasnome, aliascpf, aliasendereco;
+    public Button aliassalvar, aliasapagar, aliaslogout;
     public ListView aliaslista;
 
-    private List<Anjo> anjos =new ArrayList<Anjo>();
+    private List<Anjo> anjos = new ArrayList<Anjo>();
     private ArrayAdapter<Anjo> arrayAdapterAnjo;
 
     //Firebase Database Realtime
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 
-    // Firebase Autenticação (classe conexão simplifaca a codificação
+    //Firebase Autenticação (classe conexão simplifaca a codificação
     private FirebaseAuth auth;
     private FirebaseUser user;
 
@@ -48,14 +48,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        alias_id=(EditText)findViewById(R.id.edit_Id);
-        aliasnome=(EditText)findViewById(R.id.editNome);
-        aliascpf=(EditText)findViewById(R.id.editCpf);
-        aliasendereco=(EditText)findViewById(R.id.editEndereco);
-        aliassalvar=(Button)findViewById(R.id.buttonsalvar);
-        aliasapagar=(Button)findViewById(R.id.buttonapagar);
-        aliaslogout=(Button)findViewById(R.id.buttonlogout);
-        aliaslista=(ListView)findViewById(R.id.listview);
+        alias_id = (EditText) findViewById(R.id.edit_Id);
+        aliasnome = (EditText) findViewById(R.id.editNome);
+        aliascpf = (EditText) findViewById(R.id.editCpf);
+        aliasendereco = (EditText) findViewById(R.id.editEndereco);
+        aliassalvar = (Button) findViewById(R.id.buttonsalvar);
+        aliasapagar = (Button) findViewById(R.id.buttonapagar);
+        aliaslogout = (Button) findViewById(R.id.buttonlogout);
+        aliaslista = (ListView) findViewById(R.id.listview);
         anjo = new Anjo();
         aliaslista.setOnItemClickListener(this);
 
@@ -119,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     aliaslista.setAdapter(arrayAdapterAnjo);
                 }
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
@@ -127,17 +128,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private void inicializarFirebase() {
         FirebaseApp.initializeApp(MainActivity.this);
-        firebaseDatabase= FirebaseDatabase.getInstance();
-        databaseReference=firebaseDatabase.getReference();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
         //utilizado para funcionar Offline - testar
         //firebaseDatabase.setPersistenceEnabled(true);
     }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        anjoSelecionada =(Anjo) adapterView.getItemAtPosition(i);
+        anjoSelecionada = (Anjo) adapterView.getItemAtPosition(i);
         alias_id.setText(anjoSelecionada.get_id().toString());
-        aliasnome.setText(anjoSelecionada.getNome().toString());
         aliascpf.setText(anjoSelecionada.getCpf().toString());
         aliasendereco.setText(anjoSelecionada.getEndereco().toString());
 
@@ -155,8 +155,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     protected void onStart() {
         super.onStart();
-        auth= Conexao.getFirebaseAuth();
-        user= Conexao.getFirebaseUser();
+        auth = Conexao.getFirebaseAuth();
+        user = Conexao.getFirebaseUser();
 
     }
 }

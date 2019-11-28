@@ -11,10 +11,11 @@ import android.widget.ListView;
 
 import com.example.anjoslogin.Listagem.ListarFamilias;
 import com.example.anjoslogin.Recycler.ActivityRecycler;
+import com.example.anjoslogin.Usuario.Perfil;
 
 public class SelecionarAcao extends AppCompatActivity implements AdapterView.OnItemClickListener {
     public ListView aliaslistview;
-    public String[] menu=new String[]{"Familias Cadastradas", "Sair"};
+    public String[] menu=new String[]{"Familias Cadastradas", "Visualizar Perfil","Sair"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,11 @@ public class SelecionarAcao extends AppCompatActivity implements AdapterView.OnI
                 break;
 
             case 1:
+                Intent intent1 = new Intent(getBaseContext(), Perfil.class);
+                startActivity(intent1);
+                break;
+
+            case 2:
                 finish();
                 break;
             default: break;

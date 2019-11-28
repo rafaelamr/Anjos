@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.anjoslogin.FirebaseConf.Conexao;
-import com.example.anjoslogin.MainActivity;
+//import com.example.anjoslogin.MainActivity;
 import com.example.anjoslogin.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,16 +28,16 @@ public class Perfil extends AppCompatActivity {
         aliasemail=(TextView)findViewById(R.id.textEmailPerfil);
         aliasid=(TextView)findViewById(R.id.textIdPerfil);
         aliasLogout=(Button)findViewById(R.id.buttonLogout);
-        aliascrudcomautenticacao=(Button)findViewById(R.id.buttonPerfilCrud);
-
-        aliascrudcomautenticacao.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-
-            }
-        });
+//        aliascrudcomautenticacao=(Button)findViewById(R.id.buttonPerfilCrud);
+//
+//        aliascrudcomautenticacao.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                startActivity(intent);
+//
+//            }
+//        });
 
         aliasLogout.setOnClickListener(new View.OnClickListener() {
             @Override

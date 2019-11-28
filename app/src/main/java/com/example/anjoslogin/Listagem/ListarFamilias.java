@@ -1,5 +1,6 @@
 package com.example.anjoslogin.Listagem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -15,13 +16,14 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class ListarFamilias extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class ListarFamilias extends AppCompatActivity {
 
     ListView aliaslista;
 
@@ -38,19 +40,23 @@ public class ListarFamilias extends AppCompatActivity implements AdapterView.OnI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_familias);
         aliaslista = findViewById(R.id.lvListarFamilias);
-        aliaslista.setOnItemClickListener(this);
+        inicializarFirebase();
+        eventoDatabase();
+
+//        aliaslista.setOnItemClickListener(this);
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        familia = (Familia) parent.getItemAtPosition(position);
-
-    }
+//    @Override
+//    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//        familia = (Familia) parent.getItemAtPosition(position);
+//
+//    }
 
     private void eventoDatabase() {
-        databaseReference.child("Familia").addValueEventListener(new ValueEventListener() {
+        Query query = databaseReference.child("Familia").orderByChild("nome").equalTo("Diego");
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 familias.clear();
                 for (DataSnapshot objSnapshot : dataSnapshot.getChildren()) {
                     Familia familia = objSnapshot.getValue(Familia.class);
@@ -58,19 +64,42 @@ public class ListarFamilias extends AppCompatActivity implements AdapterView.OnI
                 }
                 familiaArrayAdapter = new ArrayAdapter<Familia>(ListarFamilias.this, android.R.layout.simple_list_item_1, familias);
                 aliaslista.setAdapter(familiaArrayAdapter);
+
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
+
+//        databaseReference.child("Familia").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                familias.clear();
+//                for (DataSnapshot objSnapshot : dataSnapshot.getChildren()) {
+//                    Familia familia = objSnapshot.getValue(Familia.class);
+//                    familias.add(familia);
+//                }
+//                familiaArrayAdapter = new ArrayAdapter<Familia>(ListarFamilias.this, android.R.layout.simple_list_item_1, familias);
+//                aliaslista.setAdapter(familiaArrayAdapter);
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
     }
     private void inicializarFirebase() {
         FirebaseApp.initializeApp(ListarFamilias.this);
         firebaseDatabase = FirebaseDatabase.getInstance();
-        firebaseDatabase.setPersistenceEnabled(true);
+       // firebaseDatabase.setPersistenceEnabled(true);
         databaseReference = firebaseDatabase.getReference();
 
     }
+
+
+
 }
