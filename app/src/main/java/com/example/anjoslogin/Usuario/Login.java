@@ -12,6 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.anjoslogin.Controle.ActivityTelaInicial;
 import com.example.anjoslogin.FirebaseConf.Conexao;
 //import com.example.anjoslogin.MainActivity;
 import com.example.anjoslogin.R;
@@ -76,7 +77,7 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            Intent i=new Intent(Login.this, SelecionarAcao.class);
+                            Intent i=new Intent(Login.this, ActivityTelaInicial.class);
                             startActivity(i);
                         }
                         else

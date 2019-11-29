@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Listagem.ListarCMB"></activity>
+        <activity android:name=".Controle.ConfirmarDoacao"></activity>
+        <activity android:name=".Controle.ActivityTelaInicial" />
+        <activity android:name=".Listagem.ListarCMB" />
         <activity android:name=".Listagem.ListarMatEscolar" />
         <activity android:name=".Listagem.ListarCalcados" />
         <activity android:name=".Listagem.ListarHigLimp" />

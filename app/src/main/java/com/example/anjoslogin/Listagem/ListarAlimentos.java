@@ -3,10 +3,14 @@ package com.example.anjoslogin.Listagem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.anjoslogin.Controle.ConfirmarDoacao;
 import com.example.anjoslogin.Modelo.Familia;
 import com.example.anjoslogin.R;
 import com.google.firebase.FirebaseApp;
@@ -21,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ListarAlimentos extends AppCompatActivity {
+public class ListarAlimentos extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     ListView aliaslista;
 
@@ -102,5 +106,9 @@ public class ListarAlimentos extends AppCompatActivity {
     }
 
 
-
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(getApplicationContext(), ConfirmarDoacao.class);
+        startActivity(intent);
+    }
 }
