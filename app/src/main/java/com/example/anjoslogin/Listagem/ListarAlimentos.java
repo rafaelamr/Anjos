@@ -4,8 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -23,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ListarFamilias extends AppCompatActivity {
+public class ListarAlimentos extends AppCompatActivity {
 
     ListView aliaslista;
 
@@ -38,7 +36,7 @@ public class ListarFamilias extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listar_familias);
+        setContentView(R.layout.activity_listar_alimentos);
         aliaslista = findViewById(R.id.lvListarFamilias);
         inicializarFirebase();
         eventoDatabase();
@@ -53,16 +51,18 @@ public class ListarFamilias extends AppCompatActivity {
 //    }
 
     private void eventoDatabase() {
-        Query query = databaseReference.child("Familia").orderByChild("nome").equalTo("Diego");
+        //Query query = databaseReference.child("Familia").child("necessidade").orderByChild("necessidade").equalTo("Roupas");
+        Query query = databaseReference.child("Familia");
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 familias.clear();
                 for (DataSnapshot objSnapshot : dataSnapshot.getChildren()) {
                     Familia familia = objSnapshot.getValue(Familia.class);
+                    if(familia.getNecessidade().getNecessidade().equals("Alimentos"))
                     familias.add(familia);
                 }
-                familiaArrayAdapter = new ArrayAdapter<Familia>(ListarFamilias.this, android.R.layout.simple_list_item_1, familias);
+                familiaArrayAdapter = new ArrayAdapter<Familia>(ListarAlimentos.this, android.R.layout.simple_list_item_1, familias);
                 aliaslista.setAdapter(familiaArrayAdapter);
 
             }
@@ -73,6 +73,7 @@ public class ListarFamilias extends AppCompatActivity {
             }
         });
 
+
 //        databaseReference.child("Familia").addValueEventListener(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(DataSnapshot dataSnapshot) {
@@ -81,7 +82,7 @@ public class ListarFamilias extends AppCompatActivity {
 //                    Familia familia = objSnapshot.getValue(Familia.class);
 //                    familias.add(familia);
 //                }
-//                familiaArrayAdapter = new ArrayAdapter<Familia>(ListarFamilias.this, android.R.layout.simple_list_item_1, familias);
+//                familiaArrayAdapter = new ArrayAdapter<Familia>(ListarAlimentos.this, android.R.layout.simple_list_item_1, familias);
 //                aliaslista.setAdapter(familiaArrayAdapter);
 //
 //            }
@@ -93,7 +94,7 @@ public class ListarFamilias extends AppCompatActivity {
 //        });
     }
     private void inicializarFirebase() {
-        FirebaseApp.initializeApp(ListarFamilias.this);
+        FirebaseApp.initializeApp(ListarAlimentos.this);
         firebaseDatabase = FirebaseDatabase.getInstance();
        // firebaseDatabase.setPersistenceEnabled(true);
         databaseReference = firebaseDatabase.getReference();

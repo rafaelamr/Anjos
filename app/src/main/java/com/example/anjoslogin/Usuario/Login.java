@@ -13,19 +13,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.anjoslogin.FirebaseConf.Conexao;
-import com.example.anjoslogin.Listagem.ListarFamilias;
 //import com.example.anjoslogin.MainActivity;
 import com.example.anjoslogin.R;
-import com.example.anjoslogin.ResetarSenha;
-import com.example.anjoslogin.SelecionarAcao;
+import com.example.anjoslogin.Controle.ResetarSenha;
+import com.example.anjoslogin.Controle.SelecionarAcao;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.iid.FirebaseInstanceId;
 //import com.google.firebase.iid.FirebaseInstanceId;
 
-import java.util.UUID;
 
 public class Login extends AppCompatActivity {
     public EditText aliasemail,aliassenha;
