@@ -45,7 +45,15 @@ public class ListarAlimentos extends AppCompatActivity implements AdapterView.On
         inicializarFirebase();
         eventoDatabase();
 
-//        aliaslista.setOnItemClickListener(this);
+//       aliaslista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//           @Override
+//           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//               familia = (Familia) parent.getAdapter().getItem(position);
+//               Intent nova = new Intent(this, ConfirmarDoacao.class);
+//               nova.putExtra("Objeto", familia);
+//               startActivity(nova);
+//           }
+//       });
     }
 
 //    @Override

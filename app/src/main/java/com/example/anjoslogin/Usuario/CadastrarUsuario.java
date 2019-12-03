@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.anjoslogin.Controle.ActivityTelaInicial;
 import com.example.anjoslogin.FirebaseConf.Conexao;
 import com.example.anjoslogin.MainActivity;
 import com.example.anjoslogin.R;
@@ -22,8 +23,8 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import java.util.UUID;
 
 public class CadastrarUsuario extends AppCompatActivity {
-    public EditText aliasemail,aliassenha;
-    public Button aliascadastrar,aliasvoltar;
+    private EditText aliasemail,aliassenha;
+    private Button aliassalvar,aliasvoltar;
     private FirebaseAuth auth;
 
 
@@ -34,27 +35,33 @@ public class CadastrarUsuario extends AppCompatActivity {
         setContentView(R.layout.activity_cadastrar_usuario);
         aliasemail=(EditText)findViewById(R.id.editEmail);
         aliassenha=(EditText)findViewById(R.id.editSenha);
-        aliascadastrar=(Button)findViewById(R.id.buttonsalvar);
+        aliassalvar=(Button)findViewById(R.id.btntest);
         aliasvoltar=(Button)findViewById(R.id.buttonvoltarcadastro);
-        aliascadastrar.setOnClickListener(new View.OnClickListener() {
+
+        aliassalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = aliasemail.getText().toString().trim();
                 String senha = aliassenha.getText().toString().trim();
                 criarUsuario(email, senha);
+
             }
         });
+
+
+
         aliasvoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
-        });    }
+        });
+
+
+
+    }
 
     private void criarUsuario(String email, String senha) {
-
-
-
 
         auth.createUserWithEmailAndPassword(email, senha)
                 .addOnCompleteListener(CadastrarUsuario.this, new OnCompleteListener<AuthResult>() {
@@ -62,7 +69,7 @@ public class CadastrarUsuario extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(CadastrarUsuario.this, "Cadastrado com Sucesso", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(CadastrarUsuario.this, MainActivity.class);
+                            Intent intent = new Intent(CadastrarUsuario.this, ActivityTelaInicial.class);
                             startActivity(intent);
                             finish();
                         }else

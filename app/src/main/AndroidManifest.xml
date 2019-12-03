@@ -11,15 +11,14 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Controle.ConfirmarDoacao"></activity>
         <activity android:name=".Controle.ActivityTelaInicial" />
-        <activity android:name=".Listagem.ListarCMB" />
-        <activity android:name=".Listagem.ListarMatEscolar" />
-        <activity android:name=".Listagem.ListarCalcados" />
-        <activity android:name=".Listagem.ListarHigLimp" />
-        <activity android:name=".Listagem.ListarVestuario" />
-        <activity android:name=".Listagem.ListarAlimentos" />
-        <activity android:name=".Recycler.ActivityRecycler" />
-        <activity android:name=".Controle.SelecionarAcao" />
-        <activity android:name=".Usuario.Perfil" />
+        <activity android:name=".Listagem.ListarCMB" android:parentActivityName=".Controle.SelecionarAcao" />
+        <activity android:name=".Listagem.ListarMatEscolar" android:parentActivityName=".Controle.SelecionarAcao" />
+        <activity android:name=".Listagem.ListarCalcados" android:parentActivityName=".Controle.SelecionarAcao" />
+        <activity android:name=".Listagem.ListarHigLimp" android:parentActivityName=".Controle.SelecionarAcao"/>
+        <activity android:name=".Listagem.ListarVestuario" android:parentActivityName=".Controle.SelecionarAcao"/>
+        <activity android:name=".Listagem.ListarAlimentos"  android:parentActivityName=".Controle.SelecionarAcao"/>
+        <activity android:name=".Controle.SelecionarAcao" android:parentActivityName=".Controle.ActivityTelaInicial"/>
+        <activity android:name=".Usuario.Perfil" android:parentActivityName=".Controle.ActivityTelaInicial" />
         <activity android:name=".Controle.ResetarSenha" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Usuario.CadastrarUsuario" />

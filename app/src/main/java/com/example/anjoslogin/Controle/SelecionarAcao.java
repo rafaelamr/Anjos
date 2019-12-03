@@ -20,7 +20,7 @@ import com.example.anjoslogin.Usuario.Perfil;
 
 public class SelecionarAcao extends AppCompatActivity implements AdapterView.OnItemClickListener {
     public ListView aliaslistview;
-    public String[] menu = new String[]{"Alimentos", "Vestuário", "Higiene/Limpeza", "Calçados", "Material Escolar", "Cama, Mesa e Banho", "Sair"};
+    public String[] menu = new String[]{"Alimentos", "Vestuário", "Higiene/Limpeza", "Calçados", "Material Escolar", "Cama, Mesa e Banho"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,9 +66,6 @@ public class SelecionarAcao extends AppCompatActivity implements AdapterView.OnI
                 startActivity(intent5);
                 break;
 
-            case 6:
-                finish();
-                break;
 
             default:
                 break;

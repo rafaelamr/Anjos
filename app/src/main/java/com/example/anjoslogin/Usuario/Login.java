@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,7 +28,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity {
     public EditText aliasemail,aliassenha;
-    public Button aliaslogar,aliasNovoUsuario;
+    public Button aliaslogar,aliasNovoUsuario, aliastest;
     public TextView aliasresetarsenha;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
@@ -44,15 +45,21 @@ public class Login extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBarLogin);
         progressBar.setVisibility(View.INVISIBLE);
 
+
+
+
         aliasNovoUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), CadastrarUsuario.class);
+                Intent intent = new Intent(Login.this, CadastrarUsuario.class);
                 startActivity(intent);
 
 
             }
         });
+
+
+
         aliaslogar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +73,15 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ResetarSenha.class);
                 startActivity(intent);
+            }
+        });
+        aliasNovoUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login.this, CadastrarUsuario.class);
+                startActivity(intent);
+
+
             }
         });
     }
