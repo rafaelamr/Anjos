@@ -49,7 +49,7 @@ public class ListarVestuario extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //familia = (Familia) parent.getAdapter().getItem(position);
                 Intent novav = new Intent(ListarVestuario.this, ConfirmarDoacao.class);
-                novav.putExtra("Objeto", position);
+                novav.putExtra("ObjetoFamilia", position);
                 startActivity(novav);
             }
         });

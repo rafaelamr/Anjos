@@ -48,7 +48,7 @@ public class ListarCalcados extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //familia = (Familia) parent.getAdapter().getItem(position);
                 Intent novaCA = new Intent(ListarCalcados.this, ConfirmarDoacao.class);
-                novaCA.putExtra("Objeto", position);
+                novaCA.putExtra("ObjetoFamilia", position);
                 startActivity(novaCA);
             }
         });

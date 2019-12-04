@@ -49,7 +49,7 @@ public class ListarHigLimp extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //familia = (Familia) parent.getAdapter().getItem(position);
                 Intent novaHL = new Intent(ListarHigLimp.this, ConfirmarDoacao.class);
-                novaHL.putExtra("Objeto", position);
+                novaHL.putExtra("ObjetoFamilia", position);
                 startActivity(novaHL);
             }
         });

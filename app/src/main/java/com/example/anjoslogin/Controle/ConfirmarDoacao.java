@@ -14,15 +14,21 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.anjoslogin.FirebaseConf.Conexao;
+import com.example.anjoslogin.Listagem.ListarCalcados;
+import com.example.anjoslogin.Modelo.Anjo;
+import com.example.anjoslogin.Modelo.Doacao;
 import com.example.anjoslogin.Modelo.Familia;
 import com.example.anjoslogin.R;
 import com.example.anjoslogin.Usuario.CadastrarUsuario;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -36,11 +42,17 @@ public class ConfirmarDoacao extends AppCompatActivity implements AdapterView.On
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+    FirebaseAuth auth;
 
-    private List<Familia> familias = new ArrayList<Familia>();
-    private ArrayAdapter<Familia> familiaArrayAdapter;
+    private List<Doacao> doacoes = new ArrayList<Doacao>();
+    private ArrayAdapter<Doacao> doacaoArrayAdapter;
+
+    private List<Anjo> anjos = new ArrayList<Anjo>();
+    private ArrayAdapter<Anjo> anjoArrayAdapter;
 
     Familia familia;
+    Anjo anjo;
+    Doacao doacao;
 
 
     @Override
@@ -52,29 +64,105 @@ public class ConfirmarDoacao extends AppCompatActivity implements AdapterView.On
         aliasfamilia= findViewById(R.id.textViewConfirmar);
         listViewConfirmar = findViewById(R.id.listViewConfirmar);
 
+        listViewConfirmar.setOnItemClickListener(this);
+
         iniciarFirebase();
         eventoDatabase();
+        recuperarAnjo();
+        verificarparametro();
 
         aliasconfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(aliasdoacao.getText() != null){
                 String doar = aliasdoacao.getText().toString().trim();
                 criarDoacao(doar);
+                eventoDatabase();
+                }else
+                {
+                    Toast.makeText(ConfirmarDoacao.this, "Informe o que vai doar.", Toast.LENGTH_SHORT).show();
+                }
+
 
             }
         });
+
+
+
     }
 
-    protected void criarDoacao(String doar){
-            if(aliasdoacao != null){
-                Toast.makeText(ConfirmarDoacao.this, "Doação Cadastrada com Sucesso", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(ConfirmarDoacao.this, SelecionarAcao.class);
-                startActivity(intent);
-                finish();
-            }else
-            {
-                Toast.makeText(ConfirmarDoacao.this, "Erro no Cadastro", Toast.LENGTH_SHORT).show();
+    private void recuperarAnjo() {
+
+        Query query = databaseReference.child("Anjo");
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                anjos.clear();
+                for (DataSnapshot objSnapshot : dataSnapshot.getChildren()) {
+                    Anjo anjo = objSnapshot.getValue(Anjo.class);
+                    if(anjo.get_id().equals(auth.getUid()))
+                        anjos.add(anjo);
+                        anjo = anjos.get(0);
+                }
+//                if (anjos.size()<0){
+//                    Toast.makeText(ConfirmarDoacao.this, "Nao achei", Toast.LENGTH_SHORT).show();
+//                }else {
+//
+//                }
+
             }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+//
+//        databaseReference.child("Anjo").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                anjos.clear();
+//                for (DataSnapshot objSnapshot : dataSnapshot.getChildren()){
+//
+//                    Anjo anjo = objSnapshot.getValue(Anjo.class);
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+
+    }
+
+    private void verificarparametro() {
+        Intent intent = getIntent();
+        if (intent.getSerializableExtra("ObjetoFamilia")== null){
+            Toast.makeText(this, "Vazio", Toast.LENGTH_SHORT).show();
+            finish();
+
+        }else {
+            familia=(Familia) intent.getSerializableExtra("ObjetoFamilia");
+
+        }
+    }
+
+
+    protected void criarDoacao(String doar){
+        if (doacao.get_id() == null){
+            doacao = new Doacao();
+            doacao.set_id(databaseReference.push().getKey());
+        }
+            doacao.setFamilia(familia);
+            doacao.setAnjo(anjo);
+            doacao.setDoacao(doar);
+            databaseReference.child("Doacao").child(doacao.get_id()).setValue(doacao);
+            Toast.makeText(getBaseContext(), "Doação Registrada com Sucesso", Toast.LENGTH_SHORT).show();
+            limparCampos();
+
     }
 
 
@@ -88,7 +176,13 @@ public class ConfirmarDoacao extends AppCompatActivity implements AdapterView.On
         databaseReference.child("Familia").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
+                doacoes.clear();
+                for (DataSnapshot objSnapshot : dataSnapshot.getChildren()){
+                    Doacao doacao = objSnapshot.getValue(Doacao.class);
+                    doacoes.add(doacao);
+                }
+                doacaoArrayAdapter = new ArrayAdapter<Doacao>(ConfirmarDoacao.this, android.R.layout.simple_list_item_1, doacoes);
+                listViewConfirmar.setAdapter(doacaoArrayAdapter);
             }
 
             @Override
@@ -102,8 +196,17 @@ public class ConfirmarDoacao extends AppCompatActivity implements AdapterView.On
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        doacao = (Doacao) parent.getItemAtPosition(position);
+        aliasdoacao.setText(doacao.getDoacao().toString());
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        auth= Conexao.getFirebaseAuth();
+    }
 
-
+    private void limparCampos() {
+        aliasdoacao.setText("");
     }
 }

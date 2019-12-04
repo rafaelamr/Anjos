@@ -28,7 +28,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity {
     public EditText aliasemail,aliassenha;
-    public Button aliaslogar,aliasNovoUsuario, aliastest;
+    public Button aliaslogar,aliasNovoUsuario;
     public TextView aliasresetarsenha;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
@@ -53,7 +53,6 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Login.this, CadastrarUsuario.class);
                 startActivity(intent);
-
 
             }
         });

@@ -49,7 +49,7 @@ public class ListarCMB extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //familia = (Familia) parent.getAdapter().getItem(position);
                 Intent novaCMB = new Intent(ListarCMB.this, ConfirmarDoacao.class);
-                novaCMB.putExtra("Objeto", position);
+                novaCMB.putExtra("ObjetoFamilia", position);
                 startActivity(novaCMB);
             }
         });

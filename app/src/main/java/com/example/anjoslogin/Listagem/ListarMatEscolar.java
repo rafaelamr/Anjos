@@ -49,7 +49,7 @@ public class ListarMatEscolar extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //familia = (Familia) parent.getAdapter().getItem(position);
                 Intent novaM = new Intent(ListarMatEscolar.this, ConfirmarDoacao.class);
-                novaM.putExtra("Objeto", position);
+                novaM.putExtra("ObjetoFamilia", position);
                 startActivity(novaM);
             }
         });

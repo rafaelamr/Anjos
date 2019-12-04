@@ -9,8 +9,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.anjoslogin.Controle.ConfirmarDoacao;
+import com.example.anjoslogin.Controle.SelecionarAcao;
+import com.example.anjoslogin.Modelo.Doacao;
 import com.example.anjoslogin.Modelo.Familia;
 import com.example.anjoslogin.R;
 import com.google.firebase.FirebaseApp;
@@ -48,13 +51,17 @@ public class ListarAlimentos extends AppCompatActivity implements AdapterView.On
        aliaslista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
            @Override
            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               //familia = (Familia) parent.getAdapter().getItem(position);
+               familia = (Familia) parent.getAdapter().getItem(position);
                Intent nova = new Intent(ListarAlimentos.this, ConfirmarDoacao.class);
-               nova.putExtra("Objeto", position);
+               nova.putExtra("ObjetoFamilia", familia);
                startActivity(nova);
            }
        });
+
+
     }
+
+
 
 //    @Override
 //    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

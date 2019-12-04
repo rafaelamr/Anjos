@@ -1,6 +1,9 @@
 package com.example.anjoslogin.Modelo;
 
-public class Bairro {
+import java.io.Serializable;
+
+public class Bairro implements Serializable {
+    private static final long serialVersioUID = 1L;
     private String _id;
     private String bairro;
 

@@ -1,6 +1,9 @@
 package com.example.anjoslogin.Modelo;
 
-public class Necessidade {
+import java.io.Serializable;
+
+public class Necessidade implements Serializable {
+    private static final long serialVersioUID = 1L;
     private String _id;
     private String necessidade;
     public Necessidade(){

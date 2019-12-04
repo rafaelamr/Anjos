@@ -1,6 +1,9 @@
 package com.example.anjoslogin.Modelo;
 
-public class Doacao {
+import java.io.Serializable;
+
+public class Doacao implements Serializable {
+    private static final long serialVersioUID = 1L;
     private String _id;
     private Familia familia;
     private Anjo anjo;
