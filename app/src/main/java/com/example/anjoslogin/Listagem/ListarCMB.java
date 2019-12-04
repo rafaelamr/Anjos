@@ -3,10 +3,14 @@ package com.example.anjoslogin.Listagem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.anjoslogin.Controle.ConfirmarDoacao;
 import com.example.anjoslogin.Modelo.Familia;
 import com.example.anjoslogin.R;
 import com.google.firebase.FirebaseApp;
@@ -40,7 +44,15 @@ public class ListarCMB extends AppCompatActivity {
         inicializarFirebase();
         eventoDatabase();
 
-//        aliaslista.setOnItemClickListener(this);
+        aliaslista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //familia = (Familia) parent.getAdapter().getItem(position);
+                Intent novaCMB = new Intent(ListarCMB.this, ConfirmarDoacao.class);
+                novaCMB.putExtra("Objeto", position);
+                startActivity(novaCMB);
+            }
+        });
     }
 
 //    @Override

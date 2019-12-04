@@ -10,7 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Controle.ConfirmarDoacao"></activity>
-        <activity android:name=".Controle.ActivityTelaInicial" />
+        <activity android:name=".Controle.ActivityTelaInicial" ><intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter> /></activity>
+
         <activity android:name=".Listagem.ListarCMB" android:parentActivityName=".Controle.SelecionarAcao" />
         <activity android:name=".Listagem.ListarMatEscolar" android:parentActivityName=".Controle.SelecionarAcao" />
         <activity android:name=".Listagem.ListarCalcados" android:parentActivityName=".Controle.SelecionarAcao" />
@@ -23,11 +28,11 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".Usuario.CadastrarUsuario" />
         <activity android:name=".Usuario.Login">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
     </application>
 

@@ -3,6 +3,7 @@ package com.example.anjoslogin.Controle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,10 +12,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.anjoslogin.Modelo.Familia;
 import com.example.anjoslogin.R;
+import com.example.anjoslogin.Usuario.CadastrarUsuario;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -54,9 +58,23 @@ public class ConfirmarDoacao extends AppCompatActivity implements AdapterView.On
         aliasconfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String doar = aliasdoacao.getText().toString().trim();
+                criarDoacao(doar);
 
             }
         });
+    }
+
+    protected void criarDoacao(String doar){
+            if(aliasdoacao != null){
+                Toast.makeText(ConfirmarDoacao.this, "Doação Cadastrada com Sucesso", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ConfirmarDoacao.this, SelecionarAcao.class);
+                startActivity(intent);
+                finish();
+            }else
+            {
+                Toast.makeText(ConfirmarDoacao.this, "Erro no Cadastro", Toast.LENGTH_SHORT).show();
+            }
     }
 
 
@@ -65,6 +83,7 @@ public class ConfirmarDoacao extends AppCompatActivity implements AdapterView.On
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference= firebaseDatabase.getReference();
     }
+
     private void eventoDatabase() {
         databaseReference.child("Familia").addValueEventListener(new ValueEventListener() {
             @Override
