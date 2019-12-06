@@ -7,7 +7,7 @@ public class Anjo implements Serializable {
     private String _id;
     private String nome;
     private String cpf;
-    private String endereco;
+    private String celular;
     private String token;
 
 
@@ -42,12 +42,12 @@ public class Anjo implements Serializable {
         this.cpf = cpf;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getCelular() {
+        return celular;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setCelular(String celular) {
+        this.celular = celular;
     }
 
     public String getToken() {

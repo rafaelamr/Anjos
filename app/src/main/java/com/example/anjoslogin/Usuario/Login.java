@@ -67,6 +67,7 @@ public class Login extends AppCompatActivity {
                 login(email, senha);
             }
         });
+
         aliasresetarsenha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +75,7 @@ public class Login extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         aliasNovoUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -68,8 +68,9 @@ public class CadastrarUsuario extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+
                             Toast.makeText(CadastrarUsuario.this, "Cadastrado com Sucesso", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(CadastrarUsuario.this, ActivityTelaInicial.class);
+                            Intent intent = new Intent(CadastrarUsuario.this, ManterAnjo.class);
                             startActivity(intent);
                             finish();
                         }else

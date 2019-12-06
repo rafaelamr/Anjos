@@ -34,7 +34,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConfirmarDoacao extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class ConfirmarDoacao extends AppCompatActivity {
     public Button aliasconfirmar;
     public EditText aliasdoacao;
     public TextView aliasfamilia;
@@ -64,12 +64,14 @@ public class ConfirmarDoacao extends AppCompatActivity implements AdapterView.On
         aliasfamilia= findViewById(R.id.textViewConfirmar);
         listViewConfirmar = findViewById(R.id.listViewConfirmar);
 
-        listViewConfirmar.setOnItemClickListener(this);
+        doacao=new Doacao();
 
         iniciarFirebase();
-        eventoDatabase();
         recuperarAnjo();
         verificarparametro();
+        eventoDatabase();
+
+
 
         aliasconfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,13 +79,10 @@ public class ConfirmarDoacao extends AppCompatActivity implements AdapterView.On
                 if(aliasdoacao.getText() != null){
                 String doar = aliasdoacao.getText().toString().trim();
                 criarDoacao(doar);
-                eventoDatabase();
                 }else
                 {
                     Toast.makeText(ConfirmarDoacao.this, "Informe o que vai doar.", Toast.LENGTH_SHORT).show();
                 }
-
-
             }
         });
 
@@ -99,10 +98,11 @@ public class ConfirmarDoacao extends AppCompatActivity implements AdapterView.On
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 anjos.clear();
                 for (DataSnapshot objSnapshot : dataSnapshot.getChildren()) {
-                    Anjo anjo = objSnapshot.getValue(Anjo.class);
-                    if(anjo.get_id().equals(auth.getUid()))
+                    anjo = objSnapshot.getValue(Anjo.class);
+                    if(anjo.get_id()==auth.getUid()) {
                         anjos.add(anjo);
                         anjo = anjos.get(0);
+                    }
                 }
 //                if (anjos.size()<0){
 //                    Toast.makeText(ConfirmarDoacao.this, "Nao achei", Toast.LENGTH_SHORT).show();
@@ -146,7 +146,6 @@ public class ConfirmarDoacao extends AppCompatActivity implements AdapterView.On
 
         }else {
             familia=(Familia) intent.getSerializableExtra("ObjetoFamilia");
-
         }
     }
 
@@ -159,8 +158,9 @@ public class ConfirmarDoacao extends AppCompatActivity implements AdapterView.On
             doacao.setFamilia(familia);
             doacao.setAnjo(anjo);
             doacao.setDoacao(doar);
-            databaseReference.child("Doacao").child(doacao.get_id()).setValue(doacao);
+            databaseReference.child("Familia").child(familia.get_id()).child("Doacao").child(doacao.get_id()).setValue(doacao);
             Toast.makeText(getBaseContext(), "Doação Registrada com Sucesso", Toast.LENGTH_SHORT).show();
+            //eventoDatabase();
             limparCampos();
 
     }
@@ -173,7 +173,7 @@ public class ConfirmarDoacao extends AppCompatActivity implements AdapterView.On
     }
 
     private void eventoDatabase() {
-        databaseReference.child("Familia").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Familia").child(familia.get_id()).child("Doacao").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 doacoes.clear();
@@ -194,16 +194,21 @@ public class ConfirmarDoacao extends AppCompatActivity implements AdapterView.On
 
 
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        doacao = (Doacao) parent.getItemAtPosition(position);
-        aliasdoacao.setText(doacao.getDoacao().toString());
-    }
+//    @Override
+//    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//        doacao = (Doacao) parent.getItemAtPosition(position);
+//        aliasdoacao.setText(doacao.getDoacao().toString());
+//    }
 
     @Override
     protected void onStart() {
         super.onStart();
         auth= Conexao.getFirebaseAuth();
+        recuperarAnjo();
+        verificarparametro();
+
+        Toast.makeText(this, ""+familia, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, ""+anjo, Toast.LENGTH_SHORT).show();
     }
 
     private void limparCampos() {

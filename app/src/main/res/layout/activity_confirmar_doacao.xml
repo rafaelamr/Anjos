@@ -4,28 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/apprafa2"
     tools:context=".Controle.ConfirmarDoacao">
 
     <TextView
         android:id="@+id/textViewConfirmar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/editDoacao"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.044" />
-
-    <EditText
-        android:id="@+id/editDoacao"
-        android:layout_width="279dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="105dp"
-        android:ems="10"
-        android:hint="Estou doando..."
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,10 +20,12 @@
         android:id="@+id/buttonConfirmar"
         android:layout_width="187dp"
         android:layout_height="48dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginBottom="12dp"
         android:background="@drawable/redondin"
         android:text="Confirmar Doação"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editDoacao" />
@@ -55,8 +44,26 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="Doações feitas Anteriormente:"
+        android:textColor="@color/common_google_signin_btn_text_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonConfirmar" />
+
+    <EditText
+        android:id="@+id/editDoacao"
+        android:layout_width="220dp"
+        android:layout_height="84dp"
+
+        android:background="@drawable/redondintext"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Estou doando..."
+        android:inputType="textMultiLine"
+        android:paddingLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewConfirmar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

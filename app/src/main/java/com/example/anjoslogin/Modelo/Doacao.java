@@ -15,9 +15,9 @@ public class Doacao implements Serializable {
 
     @Override
     public String toString() {
-        return "O anjo" + anjo+ " efetuou uma doação:" + '\n' +
-                "Família: " + familia + '\n' +
-                "Doação:'" + doacao;
+        return "O anjo " + anjo+ " efetuou uma doação:" + '\n' +
+//                "Família: " + familia + '\n' +
+                "Doação:" + doacao;
     }
 
     public String get_id() {

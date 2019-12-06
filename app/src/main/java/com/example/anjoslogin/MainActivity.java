@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 anjo.set_id(alias_id.getText().toString());
                 anjo.setNome(aliasnome.getText().toString());
                 anjo.setCpf(aliascpf.getText().toString());
-                anjo.setEndereco(aliasendereco.getText().toString());
+                anjo.setCelular(aliasendereco.getText().toString());
                 anjo.setToken(FirebaseInstanceId.getInstance().getToken());
                 //databaseReference.child("Cachorro").child(String.valueOf(cachorro.get_id())).setValue(cachorro);
                 // o segundo child, separa os cachorros pelo Uid do usuário, fornecido pelo Firebase Authentication
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         anjoSelecionada = (Anjo) adapterView.getItemAtPosition(i);
         alias_id.setText(anjoSelecionada.get_id().toString());
         aliascpf.setText(anjoSelecionada.getCpf().toString());
-        aliasendereco.setText(anjoSelecionada.getEndereco().toString());
+        aliasendereco.setText(anjoSelecionada.getCelular().toString());
 
     }
 

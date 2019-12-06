@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/apprafa2"
+    tools:context=".Usuario.ManterAnjo">
+
+    <EditText
+        android:id="@+id/editNomeAnjo"
+        android:layout_width="220dp"
+        android:layout_height="39dp"
+        android:background="@drawable/redondintext"
+        android:ems="10"
+        android:hint="Nome"
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/editCpfAnjo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.921" />
+
+    <EditText
+        android:id="@+id/editCpfAnjo"
+        android:layout_width="221dp"
+        android:layout_height="41dp"
+        android:background="@drawable/redondintext"
+        android:ems="10"
+        android:hint="CPF"
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editNomeAnjo"
+        app:layout_constraintStart_toStartOf="@+id/editNomeAnjo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editCelularAnjo"
+        android:layout_width="220dp"
+        android:layout_height="42dp"
+        android:background="@drawable/redondintext"
+        android:ems="10"
+        android:hint="Celular"
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editCpfAnjo"
+        app:layout_constraintStart_toStartOf="@+id/editCpfAnjo"
+        app:layout_constraintTop_toBottomOf="@+id/editCpfAnjo"
+        app:layout_constraintVertical_bias="0.089" />
+
+    <Button
+        android:id="@+id/buttonSalvarAnjo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="salvar"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:background="@drawable/redondin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editCelularAnjo"
+        app:layout_constraintVertical_bias="0.188" />
+</androidx.constraintlayout.widget.ConstraintLayout>

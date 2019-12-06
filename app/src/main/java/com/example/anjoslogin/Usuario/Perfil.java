@@ -42,7 +42,7 @@ public class Perfil extends AppCompatActivity {
         aliasLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Conexao.logOut();
+                Conexao.logOut();
                 finish();
             }
         });
