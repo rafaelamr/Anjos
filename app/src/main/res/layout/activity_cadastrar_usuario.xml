@@ -37,7 +37,7 @@
         android:ems="10"
         android:hint="Senha"
         android:paddingLeft="20dp"
-        android:inputType="textPassword"
+        android:inputType="numberPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"

@@ -44,7 +44,7 @@
         android:ems="10"
         android:hint="Senha:"
         android:paddingLeft="20dp"
-        android:inputType="textPassword"
+        android:inputType="numberPassword"
         app:layout_constraintBottom_toTopOf="@+id/tVResetar"
         app:layout_constraintEnd_toEndOf="@+id/editEmailLogin"
         app:layout_constraintHorizontal_bias="0.0"

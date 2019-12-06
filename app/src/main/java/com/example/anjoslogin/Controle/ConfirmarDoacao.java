@@ -101,7 +101,7 @@ public class ConfirmarDoacao extends AppCompatActivity {
                     if(anjo.get_id().equals(auth.getCurrentUser().getUid())) {
                         anjos.add(anjo);
                         anjoquery = anjos.get(0);
-                        Toast.makeText(ConfirmarDoacao.this, ""+auth.getUid(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(ConfirmarDoacao.this, ""+auth.getUid(), Toast.LENGTH_SHORT).show();
                      }
                 }
 //                if (anjos.size()<0){

@@ -6,18 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.anjoslogin.FirebaseConf.Conexao;
-import com.example.anjoslogin.Modelo.Bairro;
 import com.example.anjoslogin.R;
 import com.example.anjoslogin.Usuario.Perfil;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ActivityTelaInicial extends AppCompatActivity {
-    public Button aliasEfetuarDoacao, aliasVerPerfil;
-    public TextView aliaspontos;
+    public Button aliasEfetuarDoacao, aliasVerPerfil, aliaspontos;
     private FirebaseAuth auth;
 
     @Override
@@ -25,7 +22,7 @@ public class ActivityTelaInicial extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_inicial);
         aliasEfetuarDoacao = findViewById(R.id.buttonefetuardoacao);
-        aliaspontos= findViewById(R.id.textViewPontos);
+        aliaspontos= findViewById(R.id.buttonpontos);
         aliasVerPerfil = findViewById(R.id.buttonverperfil);
 
         aliasEfetuarDoacao.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +41,14 @@ public class ActivityTelaInicial extends AppCompatActivity {
             }
         });
 
+        aliaspontos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), VisualizarBairros.class);
+                startActivity(intent);
+            }
+        });
+
 
 
     }
@@ -52,6 +57,6 @@ public class ActivityTelaInicial extends AppCompatActivity {
         super.onStart();
 
         auth= Conexao.getFirebaseAuth();
-        Toast.makeText(this, ""+auth.getUid(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, ""+auth.getUid(), Toast.LENGTH_SHORT).show();
     }
 }

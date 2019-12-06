@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.anjoslogin.Controle.ActivityTelaInicial;
 import com.example.anjoslogin.FirebaseConf.Conexao;
 //import com.example.anjoslogin.MainActivity;
+import com.example.anjoslogin.Modelo.Anjo;
 import com.example.anjoslogin.R;
 import com.example.anjoslogin.Controle.ResetarSenha;
 import com.example.anjoslogin.Controle.SelecionarAcao;
@@ -23,6 +24,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.iid.FirebaseInstanceId;
 //import com.google.firebase.iid.FirebaseInstanceId;
 
 
@@ -30,8 +32,11 @@ public class Login extends AppCompatActivity {
     public EditText aliasemail,aliassenha;
     public Button aliaslogar,aliasNovoUsuario;
     public TextView aliasresetarsenha;
+   // public String token;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
+
+    //Anjo anjo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,9 +70,13 @@ public class Login extends AppCompatActivity {
         aliaslogar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //token = FirebaseInstanceId.getInstance().getToken();
+
                 String email = aliasemail.getText().toString().trim();
                 String senha = aliassenha.getText().toString().trim();
                 login(email, senha);
+                //anjo.setToken(token);
+
             }
         });
 
@@ -115,6 +124,6 @@ public class Login extends AppCompatActivity {
         super.onStart();
         //
         auth= Conexao.getFirebaseAuth();
-        Toast.makeText(this, ""+auth.getUid(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, ""+auth.getUid(), Toast.LENGTH_SHORT).show();
     }
 }
