@@ -43,7 +43,8 @@ public class Perfil extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Conexao.logOut();
-                finish();
+                Intent intent = new Intent(Perfil.this, Login.class);
+                startActivity(intent);
             }
         });
     }

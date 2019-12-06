@@ -58,10 +58,10 @@ public class ManterAnjo extends AppCompatActivity {
         aliasalvaranjo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (anjo.get_id() == null){
-                    anjo = new Anjo();
-                    anjo.set_id(auth.getUid());
-                }
+                   if (anjo.get_id() == null) {
+                       anjo = new Anjo();
+                       anjo.set_id(auth.getUid());
+                   }
                 anjo.setNome(aliasnomeanjo.getText().toString());
                 anjo.setCpf(aliascpfanjo.getText().toString());
                 anjo.setCelular(aliascelularanjo.getText().toString());

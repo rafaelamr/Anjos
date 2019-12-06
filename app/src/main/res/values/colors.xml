@@ -6,5 +6,6 @@
     <color name="colorBotao">#FFF587AB</color>
     <color name="corPrincipal">#e1bee7</color>
     <color name="corSecundaria">#ce93d8</color>
+    <color name="colorFundo">#F8C5D6</color>
 
 </resources>

@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.anjoslogin.FirebaseConf.Conexao;
 import com.example.anjoslogin.Listagem.ListarCalcados;
 import com.example.anjoslogin.Modelo.Anjo;
+import com.example.anjoslogin.Modelo.Bairro;
 import com.example.anjoslogin.Modelo.Doacao;
 import com.example.anjoslogin.Modelo.Familia;
 import com.example.anjoslogin.R;
@@ -35,7 +36,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ConfirmarDoacao extends AppCompatActivity {
-    public Button aliasconfirmar;
+    public Button aliasconfirmar, aliasvisualizar;
     public EditText aliasdoacao;
     public TextView aliasfamilia;
     public ListView listViewConfirmar;
@@ -51,9 +52,8 @@ public class ConfirmarDoacao extends AppCompatActivity {
     private ArrayAdapter<Anjo> anjoArrayAdapter;
 
     Familia familia;
-    Anjo anjo;
+    Anjo anjo, anjoquery;
     Doacao doacao;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +67,8 @@ public class ConfirmarDoacao extends AppCompatActivity {
         doacao=new Doacao();
 
         iniciarFirebase();
-        recuperarAnjo();
         verificarparametro();
+        recuperarAnjo();
         eventoDatabase();
 
 
@@ -87,22 +87,22 @@ public class ConfirmarDoacao extends AppCompatActivity {
         });
 
 
-
     }
 
     private void recuperarAnjo() {
 
         Query query = databaseReference.child("Anjo");
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
+        query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 anjos.clear();
                 for (DataSnapshot objSnapshot : dataSnapshot.getChildren()) {
-                    anjo = objSnapshot.getValue(Anjo.class);
-                    if(anjo.get_id()==auth.getUid()) {
+                    anjo =(Anjo) objSnapshot.getValue(Anjo.class);
+                    if(anjo.get_id().equals(auth.getCurrentUser().getUid())) {
                         anjos.add(anjo);
-                        anjo = anjos.get(0);
-                    }
+                        anjoquery = anjos.get(0);
+                        Toast.makeText(ConfirmarDoacao.this, ""+auth.getUid(), Toast.LENGTH_SHORT).show();
+                     }
                 }
 //                if (anjos.size()<0){
 //                    Toast.makeText(ConfirmarDoacao.this, "Nao achei", Toast.LENGTH_SHORT).show();
@@ -156,7 +156,7 @@ public class ConfirmarDoacao extends AppCompatActivity {
             doacao.set_id(databaseReference.push().getKey());
         }
             doacao.setFamilia(familia);
-            doacao.setAnjo(anjo);
+            doacao.setAnjo(anjoquery);
             doacao.setDoacao(doar);
             databaseReference.child("Familia").child(familia.get_id()).child("Doacao").child(doacao.get_id()).setValue(doacao);
             Toast.makeText(getBaseContext(), "Doação Registrada com Sucesso", Toast.LENGTH_SHORT).show();
@@ -204,11 +204,12 @@ public class ConfirmarDoacao extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         auth= Conexao.getFirebaseAuth();
-        recuperarAnjo();
-        verificarparametro();
 
-        Toast.makeText(this, ""+familia, Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, ""+anjo, Toast.LENGTH_SHORT).show();
+        verificarparametro();
+        recuperarAnjo();
+
+//        Toast.makeText(this, ""+familia, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, ""+anjo, Toast.LENGTH_SHORT).show();
     }
 
     private void limparCampos() {

@@ -37,6 +37,9 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
+
         aliasemail=(EditText)findViewById(R.id.editEmailLogin);
         aliassenha=(EditText)findViewById(R.id.editSenhaLogin);
         aliaslogar=(Button)findViewById(R.id.buttonLogar);
@@ -110,6 +113,8 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        //
         auth= Conexao.getFirebaseAuth();
+        Toast.makeText(this, ""+auth.getUid(), Toast.LENGTH_SHORT).show();
     }
 }

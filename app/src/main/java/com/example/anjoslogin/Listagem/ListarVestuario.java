@@ -48,9 +48,9 @@ public class ListarVestuario extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //familia = (Familia) parent.getAdapter().getItem(position);
-                Intent novav = new Intent(ListarVestuario.this, ConfirmarDoacao.class);
-                novav.putExtra("ObjetoFamilia", position);
-                startActivity(novav);
+                Intent nova = new Intent(ListarVestuario.this, ConfirmarDoacao.class);
+                nova.putExtra("ObjetoFamilia", position);
+                startActivity(nova);
             }
         });
     }
